@@ -79,7 +79,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # ZSH_TMUX_AUTOCONNECT="false"
 # ZSH_TMUX_AUTOSTART="false"
 
-plugins=(safe-paste git systemd lwr z vi colored-man)
+plugins=(safe-paste git git-flow systemd lwr z vi colored-man)
 
 # Zeigt ~/.ssh/known_hosts in der Autocompletion für hosts
 #zstyle -e ':completion::*:hosts' hosts 'reply=($(sed -e "/^#/d" -e "s/ .*\$//" -e "s/,/ /g" /etc/ssh_known_hosts(N) ~/.ssh/known_hosts(N) 2>/dev/null | xargs) $(grep \^Host ~/.ssh/config(N) | cut -f2 -d\  2>/dev/null | xargs))'

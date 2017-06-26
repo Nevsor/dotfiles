@@ -9,4 +9,14 @@ function p() {
     pacaur $@
     rehash
 }
+compdef p=pacaur
 
+# git flow shortcuts (additons to the git-flow plugin)
+alias gflb='git flow bugfix'
+alias gflbs='git flow bugfix start'
+alias gflbf='git flow bugfix finish'
+alias gflc='git flow config'
+alias gfll='git flow log'
+alias gfls='git flow support'
+alias gflss='git flow support start'
+alias gflsf='git flow support finish'
