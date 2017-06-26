@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/usr/share/nvim/runtime/tutor/en'
+let g:netrw_dirhist_2='/usr/share/nvim/runtime/tutor'
+let g:netrw_dirhist_3='/usr/share/nvim/runtime/tutor/en'
+let g:netrw_dirhist_4='/usr/share/nvim/runtime/tutor'
+let g:netrw_dirhist_5='/usr/share/nvim/runtime'

@@ -1,0 +1,322 @@
+" ---------------------- Truecolor ---------------------------------
+
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" set termguicolors
+
+
+" ---------------------- Plugins ---------------------------------
+
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+
+Plug 'tomasr/molokai' " Molokai colorscheme
+Plug 'morhetz/gruvbox' " gruvbox colorscheme
+Plug 'jacoborus/tender.vim' " tender colorscheme
+Plug 'KeitaNakamura/neodark.vim' " neodark colorscheme
+Plug 'flazz/vim-colorschemes'
+Plug 'kana/vim-arpeggio' " Key-chords
+" Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/NERDTree' " File explorer
+Plug 'scrooloose/NERDCommenter' " Commenting helper
+if has('nvim') && has('python3')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Codecompletion
+    Plug 'zchee/deoplete-jedi' " Codecompletion for Python
+endif
+Plug 'kien/ctrlp.vim' " Ctrl+P to search for files or tags
+Plug 'tpope/vim-fugitive' " improved git commands in vim
+" Plug 'christoomey/vim-tmux-navigator' " Pane switching between tmux and vim
+Plug 'w0rp/ale' " Asynchronous Linter
+" Plug 'critiqjo/lldb.nvim' " LLDB integration
+Plug 'majutsushi/tagbar' " shows tags in current file
+Plug 'chrisbra/improvedft' " multiline jumping with f/t, etc.
+Plug 'vim-scripts/ebnf.vim' " syntax highlighting for EBNF
+" Plug 'dogrover/pentadactyl'
+Plug 'tweekmonster/braceless.vim' " indenting, folding, highlighting, etc. for indentation based languages
+Plug 'vim-scripts/indentpython.vim'
+
+" Initialize plugin system
+call plug#end()
+
+
+" ---------------------- Colorscheme ---------------------------------
+
+set bg=dark
+colorscheme gruvbox
+let g:gruvbox_italic=1
+let g:gruvbox_bold = 0
+let g:gruvbox_underline = 0
+
+" show tmux background:
+hi Normal guibg=NONE ctermbg=NONE
+
+
+" ---------------------- Editor ---------------------------------
+
+syntax on
+set autoindent
+set incsearch
+set shiftwidth=4 softtabstop=4 expandtab
+set smartcase
+
+set matchpairs+=<:>
+
+" Enable mouse
+set mouse=a
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
+
+set number
+set textwidth=80
+set showmatch
+" set spell
+set errorbells
+set visualbell
+
+set hlsearch
+set smartcase
+
+set backspace=indent,eol,start
+
+set laststatus=0
+
+set encoding=utf-8
+
+set scrolloff=3
+set undofile
+set undolevels=1000
+
+
+if has('nvim')
+    " set cursorshape in urxvt with neovim
+    " set $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+    set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+                \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+                \,sm:block-blinkwait175-blinkoff150-blinkon175
+else
+    " set clipboard=unnamed
+    if exists('$TMUX')
+        let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+    else
+        " set cursorshape in urxvt with vim
+        let &t_SI = "\<esc>[5 q" 
+        let &t_SR = "\<esc>[3 q" 
+        let &t_EI = "\<esc>[0 q"
+
+        " escape codes for other terminals
+        " let &t_SI = "\e[5 q"
+        " let &t_EI = "\e[1 q"
+        " let &t_EI = "\<Esc>[5 q"
+        " let &t_EI = "\<Esc>[1 q"
+        " let &t_SI = "\]50;CursorShape=1\x7"
+        " let &t_EI = "\]50;CursorShape=0\x7"
+    endif
+endif
+
+autocmd FileType haml,yaml,coffee BracelessEnable +indent +fold
+
+" ---------------------- Misc ---------------------------------
+set nocompatible
+set modelines=0
+filetype plugin on
+set noshowmode
+set wildmenu
+set ttyfast " Optimize for fast terminal connections
+let g:python_host_prog = '/usr/bin/python'
+let g:python2_host_prog = '/usr/bin/python2' " TODO: make this work somehow
+let g:python3_host_prog ='/usr/bin/python3' " TODO: make this work somehow
+
+let mapleader = ' '
+nmap <CR> :
+" noremap : <Nop>
+
+" Exit visual, insert or command mode with 'jk' or 'kj'
+" vnoremap <silent> jk <C-c>
+" vnoremap <silent> kj <C-c>
+" inoremap <silent> jk <ESC>
+" inoremap <silent> kj <ESC>
+" cnoremap <silent> jk <C-c>
+" cnoremap <silent> kj <C-c>
+" Arpeggioinoremap kl <Esc>
+call arpeggio#map('i', '', 0, 'jk', '<Esc>')
+
+" ---------------------- Searching --------------------------------------
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+
+" ---------------------- Commenting --------------------------------------
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+
+" ---------------------- Codecompletion ---------------------------------
+
+if has('python3')
+    let g:deoplete#enable_at_startup = 1
+    if !exists('g:deoplete#omni#input_patterns')
+      let g:deoplete#omni#input_patterns = {}
+    endif
+    " let g:deoplete#disable_auto_complete = 1
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    " deoplete tab-complete
+    nnoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+    let g:deoplete#enable_refresh_always=1
+    let g:deoplete#file#enable_buffer_path=1
+    let g:deoplete#auto_completion_start_length = 0
+    let g:deoplete#sources#jedi#show_docstring = 1
+
+    " omnifuncs
+    augroup omnifuncs
+      autocmd!
+      autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+      autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+      autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+      autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+      autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+      autocmd FileType ebnf setlocal omnifunc=ebnfcomplete#CompleteTags
+    augroup end
+
+    " deoplete tab-complete
+    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+    inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+endif
+
+
+" ---------------------- Programming Helpers -------------------
+
+nnoremap <F8> :TagbarToggle<CR>
+
+
+" ---------------------- Linter ---------------------------------
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_linters = {
+\   'python': ['pylint'],
+\   'c': ['clang'],
+\   'cpp': ['clang']
+\}
+let g:ale_python_flake8_args = '$(which flake8)'
+let g:ale_python_flake8_executable = 'python3'
+let g:ale_python_mypy_options = '--show-column-numbers'
+let g:ale_python_pylint_use_global = 0
+let g:ale_cpp_clang_options = '-Iinclude -std=c++14 -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++98-c++11-compat-pedantic -Wno-padded -Wno-unused-macros -Wno-shadow -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS' 
+set statusline+=%{ALEGetStatusLine()}
+let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+
+" ---------------------- tmux-navigator ---------------------------------
+
+" let g:tmux_navigator_no_mappings = 1
+" noremap <silent> <a-h> :TmuxNavigateLeft<cr>
+" noremap <silent> <a-j> :TmuxNavigateDown<cr>
+" noremap <silent> <a-k> :TmuxNavigateUp<cr>
+" noremap <silent> <a-l> :TmuxNavigateRight<cr>
+" noremap <silent> <a-left> :TmuxNavigateLeft<cr>
+" noremap <silent> <a-down> :TmuxNavigateDown<cr>
+" noremap <silent> <a-up> :TmuxNavigateUp<cr>
+" noremap <silent> <a-right> :TmuxNavigateRight<cr>
+" noremap <silent> <a-p> :TmuxNavigatePrevious<cr>
+" inoremap <silent> <a-> <esc>:TmuxNavigateLeft<cr>
+" inoremap <silent> <a-j> <esc>:TmuxNavigateDown<cr>
+" inoremap <silent> <a-k> <esc>:TmuxNavigateUp<cr>
+" inoremap <silent> <a-l> <esc>:TmuxNavigateRight<cr>
+" inoremap <silent> <a-left> <esc>:TmuxNavigateLeft<cr>
+" inoremap <silent> <a-down> <esc>:TmuxNavigateDown<cr>
+" inoremap <silent> <a-up> <esc>:TmuxNavigateUp<cr>
+" inoremap <silent> <a-right> <esc>:TmuxNavigateRight<cr>
+" inoremap <silent> <a-p> <esc>:TmuxNavigatePrevious<cr>
+
+
+" ---------------------- Keybindings ---------------------------------
+
+" exe "map ü ["
+" exe "map + ]"
+" exe "map <C-ü> <C-[>"
+" exe "map <C-+> <C-]>"
+" nnoremap <silent> Q :q<CR>
+
+" Map some commands on the German keyboards layouts to their original places.
+exe "nmap ö ;"
+exe "nmap Ö ,"
+exe "nmap gö g;"
+exe "nmap gÖ g,"
+nnoremap - /
+nnoremap _ ?
+
+" Hide search highlight on redraw
+noremap <C-l> :noh<CR><C-l>
+
+" Shortcut for change to last buffer
+nnoremap ^ <C-^>
+
+" Free J for the window navigation keybindings.
+nnoremap <C-j> J
+
+" Navigate between windows
+nmap <silent> H <C-w>h
+nmap <silent> J <C-w>j
+nmap <silent> K <C-w>k
+nmap <silent> L <C-w>l
+
+" Make Y behave like D, C, etc.
+nnoremap Y y$
+
+
+" ---------------------- Leader keybindings ---------------------------------
+
+" Save file
+nnoremap <silent> <Leader>w :w<CR>
+
+" Copy/Paste from system clipboard
+nmap <silent> <Leader>y "+y
+nmap <silent> <Leader>Y "+Y
+nmap <silent> <Leader>x "+x
+nmap <silent> <Leader>X "+X
+nmap <silent> <Leader>d "+d
+nmap <silent> <Leader>D "+D
+nmap <silent> <Leader>p "+p
+nmap <silent> <Leader>P "+P
+nmap <silent> <Leader><Leader> za
+
+nmap <silent> <Leader>t :NERDTree<CR>
+nnoremap <silent> <Leader>q ZZ
+
+" ----------------------- Fixes ---------------------------------------------
+
+noh " Fix mysterious highlighting after sourcing .vimrc
+
+" show tmux/terminal background
+hi Normal guibg=NONE ctermbg=NONE

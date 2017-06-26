@@ -1,0 +1,76 @@
+" Use home row letters for hints instead of numbers
+set hintkeys=asdfgölkjh
+
+" Use system clipboard by default
+js editor.defaultRegister="+"
+
+" use a different color scheme
+" colorscheme solarized-light
+
+" Only show the command line and status bar
+set guioptions=Cs
+
+" only show the tab bar if there are more than 1 tabs
+set showtabline='multitab'
+
+" add bookmarks to and remove search from open completions
+set complete=location,bookmark,file
+
+" highlight Hint 'font: bold 16px "DejaVu Sans Mono", monospace !important; margin -.2x; padding 0 0 0 1px; outline 1px solid rgba(0,0,0,1); background rgba(255,248,231,1); color:black;'
+
+highlight Hint -append font-size:16px; font bold 16px "DejaVu Sans Mono"
+
+" ------------------- Searching ------------------------------------------------
+
+" find as you type
+set incfind
+
+" highlight the terms
+set hlfind
+
+" unless they contain upper-case letters
+set findcase=smart
+
+" a toggle for search highlight
+map <silent> coh :set hlfind!<CR>
+
+" Set up google as the default search engine
+set defsearch=google
+
+" Override ignorecase if pattern has uppercase chars
+set wildcase=.?:smart
+set findcase=smart
+
+" ------------------- Key mappings ---------------------------------------------
+
+" smooth scroll setting
+set scrollsteps=10
+set scrolltime=10
+
+" Go to the next/previous tab
+map -builtin J <C-p>
+map -builtin K <C-n>
+
+" scroll half a page without Ctrl
+map -builtin d <C-d>
+map -builtin u <C-u>
+
+" close tab on x instead of d
+map -builtin x d
+map -builtin X D
+map -builtin D <Nop>
+
+" restore closed tab
+map -builtin U u
+
+" map -builtin <CR> :
+
+map <C-l> :noh<CR>
+
+map <C-r> <silent> :emenu View.Enter Reader View<CR>
+
+
+" --------------------- Bug fixes ----------------------------------------------
+
+" Show messages on startup
+:messages

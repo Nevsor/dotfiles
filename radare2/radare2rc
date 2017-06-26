@@ -1,0 +1,19 @@
+e asm.cmtright = true 
+e asm.syntax = intel
+e scr.color = true
+e scr.utf8 = true
+e scr.pager = less -R
+e dbg.bep = main
+e cfg.editor = vi
+e asm.bytes = false
+e scr.responsive = true
+e scr.promptflag = true
+e scr.promptsect = true
+e dbg.slow = true
+# e scr.truecolor = true
+# e graph.cmtright = true
+
+eco solarized
+ec pop rgb:e37
+
+
