@@ -22,7 +22,7 @@ font pango:DejaVu Sans 10
 
 # Disable title bars
 new_window pixel 3
-hide_edge_borders smart
+hide_edge_borders both
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -157,8 +157,8 @@ set $inactive-bg-color   #383C4A
 set $inactive-bd-color   #000000
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
-#                           border          background      text                 indicator  child border 
-client.focused              $bd-color       $bg-color       $text-color          $bd-color  $bd-color  
+#                           border          background      text                 indicator  child border
+client.focused              $bd-color       $bg-color       $text-color          $bd-color  $bd-color
 client.unfocused            $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
 client.focused_inactive     $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
 client.urgent               $bg-color       $bg-color       $text-color          $bg-color  $bg-color
@@ -166,9 +166,10 @@ client.urgent               $bg-color       $bg-color       $text-color         
 
 
 # start applications
-bindsym $mod+Return exec urxvt # terminal
-bindsym $mod+b      exec firefox # browser
-bindsym $mod+m      exec thunderbird # mail
+bindsym $mod+Return exec urxvt # [t]erminal
+bindsym $mod+b      exec firefox # [b]rowser
+bindsym $mod+m      exec thunderbird # [m]ail
+# bindsym $mod+V      exec emacsclient -c # [V]isual editor
 
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -show run
@@ -185,3 +186,8 @@ bindsym Mod4+Q exec shutdown now
 
 # reboot
 bindsym Mod4+R exec reboot
+
+# Autostart
+exec --no-startup-id i3-msg 'workspace 1; exec thunderbird'
+exec --no-startup-id i3-msg 'workspace 2; exec emacsclient -c'
+exec --no-startup-id i3-msg 'workspace 1'

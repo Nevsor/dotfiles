@@ -79,7 +79,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # ZSH_TMUX_AUTOCONNECT="false"
 # ZSH_TMUX_AUTOSTART="false"
 
-plugins=(safe-paste git git-flow systemd lwr z vi colored-man)
+plugins=(safe-paste git git-flow systemd lwr z vi colored-man) # emacs
 
 # Zeigt ~/.ssh/known_hosts in der Autocompletion für hosts
 #zstyle -e ':completion::*:hosts' hosts 'reply=($(sed -e "/^#/d" -e "s/ .*\$//" -e "s/,/ /g" /etc/ssh_known_hosts(N) ~/.ssh/known_hosts(N) 2>/dev/null | xargs) $(grep \^Host ~/.ssh/config(N) | cut -f2 -d\  2>/dev/null | xargs))'
@@ -87,7 +87,7 @@ plugins=(safe-paste git git-flow systemd lwr z vi colored-man)
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Syntax Highlighting im Prompt.
 source ~/.config/alias # Import aliases
-source ~/.config/envvars # Import environment variables
+#source ~/.config/envvars # Import environment variables
 #export TERM=xterm-256color-italic
 
 bindkey "\e[3~" delete-char
@@ -95,8 +95,8 @@ bindkey "\e[3~" delete-char
 # Use incremental history with <C-p> and <C-n> too.
 bindkey '^p' up-line-or-beginning-search
 bindkey '^n' down-line-or-beginning-search
-bindkey '^[^A' up-line-or-history 
-bindkey '^[^B' down-line-or-history 
+bindkey '^[^A' up-line-or-history
+bindkey '^[^B' down-line-or-history
 
 # # # Vi-mode !!
 # bindkey -v
@@ -108,4 +108,3 @@ bindkey '^[^B' down-line-or-history
 # bindkey "^H" backward-delete-char      # Control-h also deletes the previous char
 # bindkey "^U" backward-kill-line
 #
-

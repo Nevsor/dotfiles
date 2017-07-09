@@ -17,3 +17,5 @@ export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export LESSOPEN="| src-hilite-lesspipe.sh %s" 
 export KEYTIMEOUT=1
+
+export GTK_THEME=Adwaita

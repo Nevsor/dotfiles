@@ -101,8 +101,8 @@ else
         let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
     else
         " set cursorshape in urxvt with vim
-        let &t_SI = "\<esc>[5 q" 
-        let &t_SR = "\<esc>[3 q" 
+        let &t_SI = "\<esc>[5 q"
+        let &t_SR = "\<esc>[3 q"
         let &t_EI = "\<esc>[0 q"
 
         " escape codes for other terminals
@@ -228,7 +228,7 @@ let g:ale_python_flake8_args = '$(which flake8)'
 let g:ale_python_flake8_executable = 'python3'
 let g:ale_python_mypy_options = '--show-column-numbers'
 let g:ale_python_pylint_use_global = 0
-let g:ale_cpp_clang_options = '-Iinclude -std=c++14 -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++98-c++11-compat-pedantic -Wno-padded -Wno-unused-macros -Wno-shadow -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS' 
+let g:ale_cpp_clang_options = '-Iinclude -std=c++14 -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++98-c++11-compat-pedantic -Wno-padded -Wno-unused-macros -Wno-shadow -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS'
 set statusline+=%{ALEGetStatusLine()}
 let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
 let g:ale_sign_error = '✘'
@@ -271,6 +271,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Map some commands on the German keyboards layouts to their original places.
 exe "nmap ö ;"
 exe "nmap Ö ,"
+exe "nmap ä '"
+exe "nmap Ä \""
 exe "nmap gö g;"
 exe "nmap gÖ g,"
 nnoremap - /
