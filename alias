@@ -1,15 +1,44 @@
 alias pip3="python3 -m pip"
 alias sudo='sudo '
+alias s='sudo '
 
 alias e='$EDITOR'
-alias o='xdg-open'
-alias i='ipython'
+alias se='sudoedit'
+alias o=rifle
+alias i=ipython
+
+alias cb="xsel -b"
+alias r=ranger
+alias x=exit
+
+alias pu='p -Syu'
 
 function p() {
-    pacaur $@
+    trizen $@
     rehash
 }
-compdef p=pacaur
+compdef p=trizen
+
+# Show a tree of all files and directories in a directory.
+# Show next level with <CR> and quit with <C-c>
+function ta() {
+    I=1
+    while true; do
+        echo Level: $1
+        tree -L $I
+        I=$((I+1))
+        read
+    done
+}
+
+# Show the filetype of all the files in a directory (recursive).
+function fa() {
+    if [ -z $1 ]; then
+        file **/*
+    else
+        file $1/**/*
+    fi
+}
 
 # git flow shortcuts (additons to the git-flow plugin)
 alias gflb='git flow bugfix'
@@ -20,4 +49,11 @@ alias gfll='git flow log'
 alias gfls='git flow support'
 alias gflss='git flow support start'
 alias gflsf='git flow support finish'
+
 alias p8='ping 8.8.8.8'
+
+alias m="make dev"
+alias dg="make debug --output-sync --jobs=8"
+
+alias emacs="echo haha, nice try. sleep 1; vim $@"
+alias t=tree

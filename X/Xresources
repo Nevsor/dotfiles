@@ -2,7 +2,7 @@
 URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: yellow
-URxvt*font: xft:DejaVu Sans Mono:size=12
+URxvt*font: xft:DejaVu Sans Mono Nerd Font:size=12
 ! URxvt*font:  xtf:terminus:size=10:antialias=true
 ! URxvt*letterSpace: -5 
 URxvt*depth: 32

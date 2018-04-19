@@ -19,3 +19,4 @@ export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export KEYTIMEOUT=1
 
 export GTK_THEME=Adwaita
+export PATH=$PATH:~/bin
