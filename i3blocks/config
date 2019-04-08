@@ -1,0 +1,171 @@
+command=~/.local/bin/i3blocks-contrib/$BLOCK_NAME/$BLOCK_NAME
+separator_block_width=0
+separator=false
+markup=pango
+color=#d0d0d0
+
+# [separator]
+# full_text=<span font_weight="bold" font=""></span>
+# color=#222222
+# background=#000000
+
+[essid]
+label=  
+interval=once
+signal=17
+background=#282822
+INTERFACE=wlp13s0b1
+
+[wifi]
+LABEL=  
+instance=wlp13s0b1
+interval=3
+signal=17
+background=#282822
+markup=pango
+
+# [openvpn]
+# label=
+# interval=20
+
+[iface]
+interval=2
+background=#282822
+instance=wlp13s0b1
+ADDRESS_FAMILY=inet
+LABEL= <span font_weight="bold">IPv4</span> 
+
+[iface]
+interval=2
+# color=#808080
+background=#282822
+LABEL= <span font_weight="bold">IPv6</span> 
+instance=wlp13s0b1
+ADDRESS_FAMILY=inet6
+
+# [separator]
+# full_text=<span font_weight="bold"></span>
+# color=#000000
+# background=#222222
+
+[separator]
+command=
+background=#282822
+color=#282822
+full_text= 
+
+[separator]
+command=
+background=#000000
+color=#000000
+full_text= 
+
+[cpu_usage2]
+# command=/home/sven/.local/bin/i3blocks-contrib/cpu_usage/cpu_usage
+interval=persist
+# min_width=  10.00%
+REFRESH_TIME=2
+LABEL=  
+WARN_PERCENT=50
+CRIT_PERCENT=80
+DECIMALS=0
+background=#202030
+
+[memory]
+label= 
+interval=5
+background=#202030
+
+[disk]
+interval=2
+label=  
+background=#202030
+
+[disk]
+interval=2
+label=  
+instance=/
+background=#202030
+
+[separator]
+command=
+background=#202030
+color=#202030
+full_text= 
+
+[separator]
+command=
+color=#000000
+full_text= 
+background=#000000
+
+# [battery]
+# command=~/.local/i3blocks-contrib/battery/battery
+# instance=0
+# interval=2
+# background=#202030
+
+# [separator]
+# full_text=<span font_weight="bold"></span>
+# color=#2f4f4f
+# background=#000000
+
+[brightness]
+label= 
+command=brightnessctl --device intel_backlight -m | cut -d, -f4
+interval=once
+signal=16
+background=#2f2f1f
+
+[volume-pulseaudio]
+label= 
+interval=persist
+min_width=
+background=#2f2f1f
+SUBSCRIBE=1
+USE_ALSA_NAME=0
+SHORT_FORMAT="${SYMB}${VOL}%
+LONG_FORMAT="${SYMB}${VOL}%
+
+[mediaplayer]
+instance=spotify
+interval=5
+signal=10
+background=#2f2f1f
+
+# [separator]
+# full_text=<span font_weight="bold"></span>
+# color=#282828
+# background=#2f4f4f
+
+[separator]
+command=
+background=#2f2f1f
+color=#202030
+full_text= 
+
+[separator]
+command=
+color=#000000
+full_text= 
+background=#000000
+
+[batterybar]
+label= 
+command=/usr/lib/i3blocks/batterybar -c "#5294E2" -f "#CFD2DE" -a "#EEEEEE" -1 "#EC819E" -2 orange -3 orange -4 yellow -5 yellow -6 "#00FF00" -7 "#00FF00" -8 "#00FF00" -t "#FF0000"
+interval=persist
+background=#282828
+
+[date]
+command=date "+%d.%m.%Y"
+interval=20
+label=  
+background=#182828
+
+[time]
+command=date "+%H:%M "
+interval=10 
+label=  
+background=#182828
+
+# vim: syntax=dosini
