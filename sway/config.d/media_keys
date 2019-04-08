@@ -1,0 +1,8 @@
+# Media keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+
+# Brightness keys
+bindsym XF86MonBrightnessDown exec sudo brightnessctl set 5%- && pkill -RTMIN+16 i3blocks 
+bindsym XF86MonBrightnessUp exec sudo brightnessctl set +5% && pkill -RTMIN+16 i3blocks 

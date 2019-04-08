@@ -1,0 +1,13 @@
+# start applications
+bindsym $mod+Return     exec $terminal --directory="$(sway_cwd_of_focused_window.sh)"
+bindsym $mod+b          exec $browser
+bindsym $mod+m          exec $mailclient
+bindsym $mod+o          exec $whatsapp
+bindsym $mod+Shift+V    exec $editor
+
+# start rofi (program launcher)
+# bindsym $mod+d exec rofi -show run 
+
+# # Use the terminal and a helper script as a wayland compatible application launcher.
+bindsym $mod+d exec $launch_menu
+for_window [app_id="^launcher$"] floating enable

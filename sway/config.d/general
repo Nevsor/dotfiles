@@ -1,0 +1,24 @@
+# Disable XWayland (no X applications can be used).
+# xwayland disable
+
+# The mouse cursor shall always be in the focused container.
+mouse_warping container
+focus_follows_mouse always
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exit
+
+# lock screen
+bindsym $os_mod+L exec --no-startup-id "swaylock --color 000000"
+# shutdown
+bindsym $os_mod+Q exec shutdown now
+# reboot
+bindsym $os_mod+R exec reboot
+
+# Dismiss mako notifications
+bindsym $mod+odiaeresis exec makoctl dismiss
+

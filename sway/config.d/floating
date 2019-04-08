@@ -1,0 +1,9 @@
+# Use Mouse+$mod and the left mouse button to drag floating windows.
+# Use Mouse+$mod and the right mouse button to resize floating windows.
+floating_modifier $mod
+
+# change focus between tiling / floating windows
+bindsym $mod+Minus focus mode_toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+Minus floating toggle

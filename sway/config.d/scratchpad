@@ -1,0 +1,2 @@
+bindsym $mod+space scratchpad show
+bindsym $mod+Shift+space move scatchpad

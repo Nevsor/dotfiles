@@ -1,0 +1,14 @@
+set $mod Mod1
+set $os_mod Mod4
+
+set $terminal termite
+set $start_in_terminal $terminal -e
+# set $browser firefox
+set $browser qutebrowser
+set $browser_new_window $browser --target=window
+
+# set $launch_menu rofi -show run
+set $launch_menu $start_in_terminal "sway-launcher" --name=launcher
+set $mailclient $start_in_terminal "neomutt"
+set $editor $start_in_terminal nvim
+set $whatsapp $browser_new_window "https://web.whatsapp.com"

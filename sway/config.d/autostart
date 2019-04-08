@@ -1,0 +1,12 @@
+# Mail client on workspace 10.
+# TODO: Is i3-msg needed here?
+exec --no-startup-id i3-msg 'workspace 10; exec $mailclient'
+
+# Notification daemon.
+exec mako
+
+# WhatsApp
+workspace 9; exec $browser --target=window https://web.whatsapp.com/
+
+# Go back to first workspace.
+exec --no-startup-id i3-msg 'workspace 1'

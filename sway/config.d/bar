@@ -1,0 +1,8 @@
+# Start swaybar to display a workspace bar.
+bar {
+    # Hide default seperators and seperate blocks using Pango.
+    separator_symbol ""
+
+    status_command i3blocks
+}
+
