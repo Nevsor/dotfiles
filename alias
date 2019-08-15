@@ -1,27 +1,51 @@
+#!/bin/sh
+
 alias pip3="python3 -m pip"
 alias sudo='sudo '
 alias s='sudo '
+alias h=history
 
 alias e='$EDITOR'
 alias se='sudoedit'
 alias o=rifle
 alias i=ipython
+alias i2=ipython2
 
 alias cb="xsel -b"
 alias r=ranger
 alias x=exit
 
-alias pu='p -Syu'
+if where trizen > /dev/null; then 
 
-function p() {
-    trizen $@
-    rehash
-}
-compdef p=trizen
+    alias p='trizen'
+    alias pu='trizen -Syu'
+    alias pf='trizen -Ss'
+    alias pr='trizen -R'
+    function pi() {
+        trizen -S $@
+        rehash
+    }
+    compdef pi=trizen
 
+elif where emerge > /dev/null; then
+
+    alias p='emerge -v'
+    alias pu='echo TODO'
+    alias pf='eix'
+    alias pr='sudo emerge -pv --ask --depclean'
+    function pi() {
+        sudo emerge --jobs=10 --ask --verbose $@
+        rehash
+    }
+    compdef pi=emerge
+
+fi
+
+alias f='rifle $(fzf)'
+alias t=tree
 # Show a tree of all files and directories in a directory.
 # Show next level with <CR> and quit with <C-c>
-function ta() {
+function tt() {
     I=1
     while true; do
         echo Level: $1
@@ -30,6 +54,16 @@ function ta() {
         read
     done
 }
+function ta() {
+    I=1
+    while true; do
+        echo Level: $1
+        tree -a -L $I
+        I=$((I+1))
+        read
+    done
+}
+
 
 # Show the filetype of all the files in a directory (recursive).
 function fa() {
@@ -38,6 +72,12 @@ function fa() {
     else
         file $1/**/*
     fi
+}
+
+# Create a new directory (plus parents if they not exist) and enter it.
+function mcd() {
+    mkdir --parents $1
+    cd $1
 }
 
 # git flow shortcuts (additons to the git-flow plugin)
@@ -51,9 +91,17 @@ alias gflss='git flow support start'
 alias gflsf='git flow support finish'
 
 alias p8='ping 8.8.8.8'
+alias p1='ping 1.1.1.1'
+alias pe='ping www.google.de'
+alias ge='curl'
 
 alias m="make dev"
 alias dg="make debug --output-sync --jobs=8"
 
-alias emacs="echo haha, nice try. sleep 1; vim $@"
-alias t=tree
+alias emacs="echo haha, nice try.; sleep 1; $EDITOR $@"
+
+alias lsb="lsblk --fs"
+
+alias -g G="| grep"
+alias -g L="| less"
+alias -g LL="2>&1 | less"

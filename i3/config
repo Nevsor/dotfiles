@@ -142,7 +142,7 @@ mode "resize" {
         bindsym Left resize shrink width 5 px or 5 ppt
         bindsym Down resize grow height 5 px or 5 ppt
         bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -174,7 +174,7 @@ client.urgent               $bg-color       $bg-color       $text-color         
 
 # start applications
 bindsym $mod+Return exec termite # terminal
-bindsym $mod+b      exec firefox # [b]rowser
+bindsym $mod+b      exec chromium # [b]rowser
 bindsym $mod+m      exec thunderbird # [m]ail
 # bindsym $mod+V      exec emacsclient -c # [V]isual editor
 

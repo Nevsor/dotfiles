@@ -1,22 +1,37 @@
 # add ruby gems to path
 export PATH=$PATH:/home/sven/.gem/ruby/2.4.0/bin
+export PATH=$PATH:~/bin
+export SUDO_PATH=/sbin:/bin:/usr/sbin
 
 # User configuration
 # add user's local binaries and libraries to the environment
 export PATH=~/.local/bin:$PATH
-export LD_LIBRARY_PATH=~/.local/lib:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=~/.local/lib:$LD_LIBRARY_PATH
 export MANPATH=~/.local/share/man:~/.local/man:$MANPATH
 
 # if you do a 'rm *', Zsh will give you a sanity check!
 # setopt RM_STAR_WAIT
 
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
+export BROWSER=qutebrowser
+export MERGETOOL=vimdiff
+
 export LESSOPEN="| src-hilite-lesspipe.sh %s" 
 export KEYTIMEOUT=1
 
 export GTK_THEME=Adwaita
-export PATH=$PATH:~/bin
+export GTK_SCALE=3
+
+export GDK_BACKEND=wayland
+
+# export QT_QPA_PLATFORM=wayland
+# export QT_QPA_PLATFORM=wayland
+
+# Fix issues with Java Applications (Android Studio, Ghidra, etc.)
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export XDG_DOWNLOAD_DIR=~/Downloads/

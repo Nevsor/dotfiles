@@ -11,13 +11,12 @@ color=#d0d0d0
 
 [essid]
 label=  
-interval=once
-signal=17
+interval=3
 background=#282822
 INTERFACE=wlp13s0b1
 
 [wifi]
-LABEL=  
+LABEL=   
 instance=wlp13s0b1
 interval=3
 signal=17
@@ -63,9 +62,9 @@ full_text=
 [cpu_usage2]
 # command=/home/sven/.local/bin/i3blocks-contrib/cpu_usage/cpu_usage
 interval=persist
-# min_width=  10.00%
+# min_width=  100%
 REFRESH_TIME=2
-LABEL=  
+LABEL= 
 WARN_PERCENT=50
 CRIT_PERCENT=80
 DECIMALS=0
@@ -78,12 +77,12 @@ background=#202030
 
 [disk]
 interval=2
-label=  
+label=   
 background=#202030
 
 [disk]
 interval=2
-label=  
+label=   
 instance=/
 background=#202030
 

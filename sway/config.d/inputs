@@ -1,5 +1,5 @@
 # Laptop keyboard
-input 1:1:AT_Translated_Set_2_keyboard {
+input * {
     xkb_layout de
     xkb_variant nodeadkeys
     xkb_options compose:menu
@@ -12,4 +12,3 @@ input 2:7:SynPS/2_Synaptics_TouchPad {
     natural_scroll disabled
     scroll_method two_finger
 }
-

@@ -1,10 +1,10 @@
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # Patched Font must be installed (Deja Vu Family from Nerd Fonts)!
-font pango:DejaVu Sans 12
+font pango:DejaVu Sans Nerd Font, FontAwesome 12
 
 # Disable title bars
-new_window pixel 3
+default_border pixel 3
 hide_edge_borders both
 
 # colors

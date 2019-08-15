@@ -1,5 +1,5 @@
 # Disable XWayland (no X applications can be used).
-# xwayland disable
+xwayland enable
 
 # The mouse cursor shall always be in the focused container.
 mouse_warping container
