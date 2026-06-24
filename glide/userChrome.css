@@ -1,0 +1,6 @@
+#nav-bar #back-button,
+#nav-bar #forward-button,
+#sidebar-tools-and-extensions-splitter,
+.tools-and-extensions.actions-list {
+    display: none !important;
+}
